@@ -4,17 +4,17 @@
 
 # FUNCTIONS
 
-def clean_split(string: str, separator = " "):
+def clean_split(string: str, separator = " ") -> list:
     """strip then split by the separator a string"""
     return string.strip().split(separator)
 
-def isolate_draws(line: str):
+def isolate_draws(line: str) -> list:
     """return a list of the game's draws without the key "game number:" at the beginning"""
     line = clean_split(line, ":")
     string_of_draws = line[1]
     return clean_split(string_of_draws, ";")
 
-def cube_tuple(element: list):
+def cube_tuple(element: list) -> tuple:
     """return a tuple (number: int, color: str)"""
     for m, e in enumerate(element):
         if e.isdigit():
@@ -23,7 +23,7 @@ def cube_tuple(element: list):
             continue
     return tuple(element)
 
-def compare_number_cubes(number_game: tuple, number_max: list):
+def compare_number_cubes(number_game: tuple, number_max: list) -> list:
     """compare the number of cubes drawn against the current maximum of cube of that color already drawn"""
     for max_cube in number_max:
         if number_game[1] == max_cube[1]:
@@ -31,14 +31,14 @@ def compare_number_cubes(number_game: tuple, number_max: list):
                 max_cube[0] = number_game[0]
     return number_max
 
-def calculate_power(number_max: list):
+def calculate_power(number_max: list) -> int:
     """multiply the minimum cubes of each color together"""
     game_power = 1
     for cubes in number_max:
         game_power *= cubes[0]
     return game_power
 
-def calculate_power_sum(sum: int, number_max: list):
+def calculate_power_sum(sum: int, number_max: list) -> int:
     """add the game's power to the powers sum"""
     game_power = calculate_power(number_max)
     sum += game_power

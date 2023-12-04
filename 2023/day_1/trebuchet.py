@@ -5,7 +5,7 @@ The list has been messed up and the calibration values are the first and the las
 
 # FUNCTIONS
 
-def catching_number(line: str, calibration_line: list, x: int):
+def catching_number(line: str, calibration_line: list, x: int) -> list:
     """catch the first or the last number of the string whether x = 1 or x = -1.
     Detect spelled out number too."""
     new_line = ""
@@ -21,7 +21,7 @@ def catching_number(line: str, calibration_line: list, x: int):
                         calibration_line.append(str(spelled_numbers[n]))
                         return calibration_line
 
-def calculate_sum(sum, line_values):
+def calculate_sum(sum, line_values) -> int:
     """add the calibration value of the line to the sum"""
     sum += line_values
     return sum
