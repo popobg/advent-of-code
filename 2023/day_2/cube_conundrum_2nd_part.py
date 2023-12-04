@@ -17,10 +17,9 @@ def isolate_draws(line: str):
 def cube_tuple(element: list):
     """return a tuple (number: int, color: str)"""
     for m, e in enumerate(element):
-        try:
-            int(e)
+        if e.isdigit():
             element[m] = int(e)
-        except:
+        else:
             continue
     return tuple(element)
 

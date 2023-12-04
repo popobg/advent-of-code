@@ -10,11 +10,10 @@ def catching_number(line: str, calibration_line: list, x: int):
     Detect spelled out number too."""
     new_line = ""
     for i in line[::x]:
-        try:
-            int(i)
+        if i.isdigit():
             calibration_line.append(i)
             return calibration_line
-        except:
+        else:
             new_line += i
             if len(new_line) >= 3:
                 for n in spelled_numbers.keys():
