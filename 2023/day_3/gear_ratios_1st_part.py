@@ -29,16 +29,20 @@ def search_adjacent_symbol(data: list, n_line: int, beg_ind: int, end_ind: int, 
     excluded_char = "0123456789."
     if is_special_char(data[n_line][beg_ind], excluded_char):
         return True
+
     if is_special_char(data[n_line][end_ind], excluded_char):
         return True
+
     if n_line != 0:
         for char in data[n_line - 1][(beg_ind):(end_ind + x)]:
             if char not in excluded_char:
                 return True
+
     if n_line != (len(data) - 1):
         for char in data[n_line + 1][(beg_ind):(end_ind + x)]:
             if char not in excluded_char:
                 return True
+
     return False
 
 def calculate_sum(sum: int, number: int) -> int:
@@ -78,6 +82,7 @@ for number_line, line in enumerate(data):
             part_number = int("".join(number))
             part_numbers_sum = calculate_sum(part_numbers_sum, part_number)
             index, number = reset()
+
     # parse each character of the line
     for n, element in enumerate(line):
         if element.isdigit():
@@ -85,6 +90,7 @@ for number_line, line in enumerate(data):
             number.append(element)
         # check if the current character is not a digit AND there was a digit earlier
         # on the line (if so the number list is not empty)
+
         elif not element.isdigit() and len(number) > 0:
             if is_symbol(element):
                 part_number = int("".join(number))
